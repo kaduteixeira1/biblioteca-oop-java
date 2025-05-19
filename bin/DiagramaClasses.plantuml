@@ -1,0 +1,42 @@
+@startuml Diagrama
+class Usuario {
+  - static contadorId : int
+  - nome : String
+  - id : int
+  + Usuario(nome : String)
+  + getNome() : String
+  + getId() : int
+  + toString() : String
+}
+
+class Livro {
+  - titulo : String
+  - autor : String
+  - isbn : String
+  - disponivel : boolean
+  + Livro(titulo : String, autor : String, isbn : String)
+  + getTitulo() : String
+  + getAutor() : String
+  + getIsbn() : String
+  + isDisponivel() : boolean
+  + setDisponivel(disponivel : boolean) : void
+  + toString() : String
+}
+
+class Emprestimo {
+  - livro : Livro
+  - usuario : Usuario
+  - dataEmprestimo : LocalDate
+  - dataDevolucao : LocalDate
+  + Emprestimo(livro : Livro, usuario : Usuario, dataEmprestimo : LocalDate)
+  + getLivro() : Livro
+  + getUsuario() : Usuario
+  + getDataEmprestimo() : LocalDate
+  + getDataDevolucao() : LocalDate
+  + devolver(dataDevolucao : LocalDate) : void
+  + toString() : String
+}
+
+Emprestimo --> Livro : livro
+Emprestimo --> Usuario : usuario
+@enduml
