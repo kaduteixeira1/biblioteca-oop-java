@@ -1,19 +1,38 @@
-## Getting Started
+# 📚 Sistema de Gerenciamento de Biblioteca – Java (POO)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este repositório contém a implementação de um sistema de gerenciamento de biblioteca desenvolvido em Java, utilizando o paradigma da **Programação Orientada a Objetos (POO)**. O projeto foi criado como parte da disciplina **Paradigmas de Linguagens de Programação**.
 
-## Folder Structure
+## 🎯 Objetivo
 
-The workspace contains two folders by default, where:
+O objetivo do trabalho é aplicar os principais conceitos da orientação a objetos na construção de um sistema com regras de negócio reais, como:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Cadastro de livros com validação de disponibilidade.
+- Registro e controle de empréstimos e devoluções.
+- Associação entre livros, usuários e datas.
+- Demonstração de princípios como abstração, encapsulamento e polimorfismo.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 🧠 Conceitos Aplicados
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- **Abstração**: Modelagem de entidades do mundo real (Livro, Usuário, Empréstimo).
+- **Encapsulamento**: Controle de acesso aos atributos via métodos públicos.
+- **Herança e Polimorfismo**: Preparação para expansão com especialização de classes e sobrecarga de métodos.
+- **Tratamento de exceções**: Verificação de disponibilidade de livros.
 
-## Dependency Management
+## 🛠️ Tecnologias Utilizadas
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-# biblioteca-oop-java
+- Linguagem: **Java 17**
+- IDE recomendada: **IntelliJ IDEA** ou **Eclipse**
+- Controle de versão: **Git + GitHub**
+- Diagrama de classes: **PlantUML**
+- Testes: **JUnit (em implementação futura)**
+
+## 📂 Estrutura do Projeto
+
+```plaintext
+biblioteca-oop-java/
+├── src/
+│   ├── Livro.java
+│   ├── Usuario.java
+│   ├── Emprestimo.java
+│   └── Biblioteca.java
+└── README.md
