@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,10 +38,12 @@ public class Biblioteca {
             return false;
         }
 
-        livro.setDisponivel(false);
-        Emprestimo emprestimo = new Emprestimo(livro, usuario, LocalDate.now());
+        Emprestimo emprestimo = new Emprestimo(livro, usuario, LocalDateTime.now());
         emprestimos.add(emprestimo);
+
         System.out.println("\nEmpréstimo realizado com sucesso!");
+        emprestimo.mostrarPrazoDevolucao();
+
         return true;
     }
 
@@ -50,7 +52,7 @@ public class Biblioteca {
             if (emprestimo.getLivro().getIsbn().equals(isbn) &&
                 emprestimo.getUsuario().getId() == usuarioId &&
                 emprestimo.getDataDevolucao() == null) {
-                emprestimo.devolver(LocalDate.now());
+                emprestimo.devolver(LocalDateTime.now());
                 System.out.println("\nLivro devolvido com sucesso!");
                 return true;
             }
@@ -101,9 +103,8 @@ public class Biblioteca {
     public boolean removerUsuario(int id) {
         return usuarios.removeIf(u -> u.getId() == id);
     }
-    
+
     public boolean removerLivro(String isbn) {
         return livros.removeIf(l -> l.getIsbn().equals(isbn));
     }
-    
 }
