@@ -1,12 +1,21 @@
 @startuml Diagrama
-class Usuario {
-  - static contadorId : int
-  - nome : String
-  - id : int
-  + Usuario(nome : String)
-  + getNome() : String
-  + getId() : int
-  + toString() : String
+
+class Biblioteca {
+  - livros : List<Livro>
+  - usuarios : List<Usuario>
+  - emprestimos : List<Emprestimo>
+  + Biblioteca()
+  + adicionarLivro(livro : Livro) : void
+  + adicionarUsuario(usuario : Usuario) : void
+  + emprestarLivro(isbn : String, usuarioId : int) : boolean
+  + devolverLivro(isbn : String, usuarioId : int) : boolean
+  + buscarLivroPorIsbn(isbn : String) : Livro
+  + buscarUsuarioPorId(id : int) : Usuario
+  + listarLivros() : void
+  + listarUsuarios() : void
+  + listarEmprestimos() : void
+  + removerUsuario(id : int) : boolean
+  + removerLivro(isbn : String) : boolean
 }
 
 class Livro {
@@ -23,20 +32,46 @@ class Livro {
   + toString() : String
 }
 
-class Emprestimo {
-  - livro : Livro
-  - usuario : Usuario
-  - dataEmprestimo : LocalDate
-  - dataDevolucao : LocalDate
-  + Emprestimo(livro : Livro, usuario : Usuario, dataEmprestimo : LocalDate)
-  + getLivro() : Livro
-  + getUsuario() : Usuario
-  + getDataEmprestimo() : LocalDate
-  + getDataDevolucao() : LocalDate
-  + devolver(dataDevolucao : LocalDate) : void
+class Usuario {
+  - static contadorId : int
+  - nome : String
+  - id : int
+  + Usuario(nome : String)
+  + getNome() : String
+  + getId() : int
+  + getPrazoEmprestimoDias() : int
+  + getTipo() : String
   + toString() : String
 }
 
-Emprestimo --> Livro : livro
-Emprestimo --> Usuario : usuario
+class UsuarioVip {
+  + UsuarioVip(nome : String)
+  + getPrazoEmprestimoDias() : int
+  + getTipo() : String
+}
+
+class Emprestimo {
+  - livro : Livro
+  - usuario : Usuario
+  - dataEmprestimo : LocalDateTime
+  - dataDevolucao : LocalDateTime
+  + Emprestimo(livro : Livro, usuario : Usuario, dataEmprestimo : LocalDateTime)
+  + getLivro() : Livro
+  + getUsuario() : Usuario
+  + getDataEmprestimo() : LocalDateTime
+  + getDataDevolucao() : LocalDateTime
+  + devolver(dataDevolucao : LocalDateTime) : void
+  + mostrarPrazoDevolucao() : void
+  + toString() : String
+}
+
+Biblioteca --> Livro
+Biblioteca --> Usuario
+Biblioteca --> Emprestimo
+
+Emprestimo --> Livro
+Emprestimo --> Usuario
+
+UsuarioVip --|> Usuario
+
 @enduml
